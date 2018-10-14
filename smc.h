@@ -136,8 +136,8 @@ mem_free(void *ptr, const char *file, const char *func, int line) {
 		return;
 
 error:
-		printf("[@ 0x%x] free()  : %10d Byte(s) > %s:%s():%d - ",
-						(int)mu->mem, mu->size, file, func, line);
+		printf("[@ 0x%p] free()  : %10ld Byte(s) > %s:%s():%d - ",
+						mu->mem, mu->size, file, func, line);
 		switch(state) {
 				case FREE_STATE_INVALID:
 						printf("Invalid free() detected");
@@ -175,9 +175,9 @@ mem_result(void) {
 						if (mu->inuse != 0) {
 								c++;
 								mem = mem + mu->size;
-								printf("%10d Byte%s @ 0x%x > %s:%s():%d\n",
+								printf("%10ld Byte%s @ 0x%p > %s:%s():%d\n",
 												mu->size, mu->size > 1 ? "s" : " ",
-												(int)mu->mem,
+												mu->mem,
 												mu->file, mu->func, mu->line);
 						}
 						mu = mu->next;
