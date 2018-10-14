@@ -1,0 +1,2 @@
+# smc
+Simple Memory Check
